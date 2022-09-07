@@ -326,7 +326,7 @@ if uploaded_file is not None:
      #                  file_name = 'my_power.pptx')
 
     output = BytesIO()
-    writer = pd.ExcelWriter(cwd+'/files/backup' + str(d4) + '.xlsx', engine='xlsxwriter')
+    writer = pd.ExcelWriter(output)
     df2.to_excel(writer, index=False, sheet_name='Sheet1')
     workbook = writer.book
     worksheet = writer.sheets['Sheet1']
