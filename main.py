@@ -13,7 +13,7 @@ from PIL import Image
 import kaleido
 today=date.today()
 d4 = today.strftime("%b-%d-%Y")
-cwd = os.getcwd()
+#cwd = os.getcwd()
 def add_logo(logo_path, width, height):
     """Read and return a resized logo"""
     logo = Image.open(logo_path)
@@ -318,12 +318,12 @@ if uploaded_file is not None:
 
 
 
-   # prs.save(binary_output)
-    prs.save(cwd+'/files/' + str(d4) + '.pptx')
-    #btn=st.download_button(label = 'Download powerpoint',
-    #@               data = binary_output.getvalue(),
-     #                  #on_click=delI(),
-     #                  file_name = 'my_power.pptx')
+    prs.save(binary_output)
+    #prs.save(cwd+'/files/' + str(d4) + '.pptx')
+    btn=st.download_button(label = 'Download powerpoint',
+                   data = binary_output.getvalue(),
+                       #on_click=delI(),
+                       file_name = 'my_power.pptx')
 
     output = BytesIO()
     writer = pd.ExcelWriter(output)
@@ -362,10 +362,10 @@ if uploaded_file is not None:
 
 
     writer.save()
-    #processed_data = output.getvalue()
-    #st.download_button(label='📥 Download back up',
-     #                               data=processed_data ,
-      #                              file_name= 'backup_test.xlsx')
+    processed_data = output.getvalue()
+    st.download_button(label='📥 Download back up',
+                                    data=processed_data ,
+                                    file_name= 'backup_test.xlsx')
 
     hide_st_style = """
                 <style>
